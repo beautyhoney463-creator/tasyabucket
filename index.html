@@ -1,200 +1,1087 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buket Ungu Cantik</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
+  <title>Toko Buket | Shopee Style</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;      
+      background-color: #ffe3fd;
+    }
 
-        body {
-            background-color: #f7f2ff;
-            color: #4a2c6f;
-        }
+    .navbar {
+    background-color: #e0a9e0;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    }  
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.nav-links a {
+  color: white;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-links a:hover {
+  text-decoration: underline;
+}
+.search-bar {
+  flex: 1;
+  display: flex;
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 500px;
+}
+.search-bar input {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  outline: none;
+}
+.search-bar button {
+  background-color: #d1d0cf;
+  border: none;
+  padding: 8px 15px;
+  cursor: pointer;
+  color: white;
+}
+section {
+  
+  max-width: 1200px;
+  margin: auto;
+  
+ 
+ 
+}
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #e2d3ff, #c6a7ff);
-            text-align: center;
-            padding: 60px 20px;
-        }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-        header h1 {
-            font-size: 36px;
-        }
+    .product-card {
+      background-color: #efdeeb;
+      border-radius: 10px;
+      border: 1px solid #efdeeb;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      height: 280px; /* ✅ Ukuran kotak produk seragam */
+      transition: transform 0.2s ease;
+    }
 
-        header p {
-            margin: 15px 0;
-        }
+    .product-card:hover {
+      transform: translateY(-3px);
+    }
 
-        .btn-header {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 12px 25px;
-            background-color: #7a4db3;
-            color: white;
-            border-radius: 25px;
-            text-decoration: none;
-        }
+    .product-img-container {
+      width: 100%;
+      height: 160px;
+      background-color: #efdeeb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        /* Produk */
-        .produk {
-            padding: 50px 20px;
-            text-align: center;
-        }
+    .product-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      padding: 5px;
+    }
 
-        .produk h2 {
-            margin-bottom: 30px;
-        }
+    .product-info {
+      flex: 1;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-        .produk-list {
-            display: flex;
-            gap: 25px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+    .product-name {
+      font-size: 13px;
+      color: #333;
+      height: 36px;
+      line-height: 18px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      text-align: center;
+      
+    }
 
-        /* Card */
-        .card {
-            background-color: white;
-            width: 300px;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
+    .product-price {
+      font-size: 14px;
+      color: #d0021b;
+      font-weight: bold;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+    .product-button {
+      margin-top: 8px;
+      background-color: #f38aee;
+      color: white;
+      text-align: center;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      text-decoration: none;
+    }
 
-        .card img {
-            width: 100%;
-            border-radius: 12px;
-        }
+    .product-button:hover {
+      background-color: #f5c1fa;
+    }
 
-        .card h3 {
-            margin: 15px 0 5px;
-        }
+    @media (max-width: 480px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-        .harga {
-            font-weight: bold;
-            color: #7a4db3;
-        }
+      .product-card {
+        height: 280px;
+      }
 
-        .desc {
-            font-size: 14px;
-            margin: 10px 0;
-        }
+      .product-name {
+        font-size: 12px;
+        height: 32px;
+      }
 
-        /* WhatsApp Button */
-        .btn-wa {
-            display: block;
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #25d366;
-            color: white;
-            border-radius: 8px;
-            text-decoration: none;
-        }
+      .product-price {
+        font-size: 13px;
+      }
+    }
 
-        /* Tentang */
-        .tentang {
-            background-color: #ede4ff;
-            padding: 40px 20px;
-            text-align: center;
-        }
+    footer {
+    background: #e0a9e0;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    }   
 
-        /* Footer */
-        footer {
-            background-color: #c6a7ff;
-            text-align: center;
-            padding: 15px;
-        }
+    .flower {
+  position: fixed;
+  top: -50px;
+  font-size: 30px;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  z-index: 9999;
+}
+.flower1 {
+  left: 10%;
+  animation-duration: 6s;
+  animation-delay: 0s;
+}
+.flower2 {
+  left: 25%;
+  animation-duration: 8s;
+  animation-delay: 2s;
+}
+.flower3 {
+  left: 40%;
+  animation-duration: 7s;
+  animation-delay: 1s;
+}
+.flower4 {
+left: 55%;
+animation-duration: 5s;
+animation-delay: 3s;
+}
+.flower5 {
+left: 70%;
+animation-duration: 7s;
+animation-delay: 1s;
+}
+.flower6 {
+left: 90%;
+animation-duration: 4s;
+animation-delay: 2s;
+}
+.flower7 {
+  left: 65%;
+animation-duration: 5s;
+animation-delay: 3s;
+}
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 28px;
-            }
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}    
 
-            .card {
-                width: 90%;
-            }
-        }
-    </style>
+.wa-btn {
+  background-color: #25D366;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 15px;
+  transition: background-color 0.3s;
+}
+.wa-btn:hover {
+  background-color: #1ebe5d;
+}
+
+.home-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.home-gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; /* bikin gambar rapi tanpa ketarik */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+  </style>
+
 </head>
 <body>
 
-<!-- Header -->
-<header>
-    <h1>Buket Ungu Cantik</h1>
-    <p>Buket estetik untuk hadiah orang tersayang 💜</p>
-    <a href="#produk" class="btn-header">Lihat Produk</a>
-</header>
+<div class="flower flower1">🌸</div>
+<div class="flower flower2">🌺</div>
+<div class="flower flower3">🌼</div>
+<div class="flower flower4">🌸</div>
+<div class="flower flower5">🌺</div>
+<div class="flower flower6">💠</div>
+<div class="flower flower7">🌼</div>
 
-<!-- Produk -->
-<section id="produk" class="produk">
-    <h2>Produk Kami</h2>
-
-    <div class
-      <!-- Produk -->
-<section id="produk" class="produk">
-    <h2>Produk Kami</h2>
-
-    <div class="produk-list">
-        <div class="card">
-            <img src="https://via.placeholder.com/300x300.png?text=Buket+Bunga" alt="Buket Bunga">
-            <h3>Buket Bunga Ungu</h3>
-            <p class="harga">Rp 75.000</p>
-            <p class="desc">Buket bunga ungu pastel, cocok untuk hadiah romantis.</p>
-            <a class="btn-wa" href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20Buket%20Bunga%20Ungu" target="_blank">
-                Pesan via WhatsApp
-                </a>
-        </div>
-
-        <div class="card">
-            <img src="https://via.placeholder.com/300x300.png?text=Buket+Coklat" alt="Buket Coklat">
-            <h3>Buket Coklat</h3>
-            <p class="harga">Rp 65.000</p>
-            <p class="desc">Manis dan elegan, cocok untuk ulang tahun.</p>
-            <a class="btn-wa" href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20Buket%20Coklat" target="_blank">
-                Pesan via WhatsApp
-            </a>
-        </div>
-             <div class="card">
-            <img src="https://via.placeholder.com/300x300.png?text=Buket+Uang" alt="Buket Uang">
-            <h3>Buket Uang</h3>
-            <p class="harga">Rp 100.000</p>
-            <p class="desc">Hadiah unik untuk wisuda & momen spesial.</p>
-            <a class="btn-wa" href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20Buket%20Uang" target="_blank">
-                Pesan via WhatsApp
-            </a>
-        </div>
+  <div class="navbar">
+    <img src="asset/logodm.jpg" alt="Logo Toko Buket" width="40" height="40" class="w3-margin-right">
+    <div class="logo">Doramiyaku</div>
+      <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#produk">Produk</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </div>
-</section>
+    <div class="search-bar">
+      <input type="text" placeholder="Cari produk...">
+      <button>🔍</button>
+    </div>
+  </div>
 
-<!-- Tentang -->
-<section class="tentang">
-    <h2>Tentang Kami</h2>
-      <p>
-        Buket Ungu Cantik menyediakan berbagai buket estetik dengan warna
-        ungu muda yang elegan. Cocok untuk hadiah ulang tahun, wisuda,
-        anniversary, dan momen spesial lainnya.
+  <!--HOME-->
+  <section id="home" >
+           <div class="w3-container w3-center" >
+            <h4><b>🌼✨ Doramiyaku – Buket & Ganci Lucu Bikin Hari Makin Seru! ✨🌼</b></h4>
+       <p>Selamat datang di Doramiyaku – rumahnya buket cantik dan gantungan kunci (ganci) gemes yang siap jadi pelengkap hari-harimu! 💐🔑
+       Kami menyediakan buket kreatif dan estetik untuk berbagai momen spesial seperti wisuda, ulang tahun, anniversary, sampai hadiah "dadakan" 
+       untuk orang tersayang. 💖<br>
+       <img src="asset/banner.png" alt="banner" style="width: 75%; height: auto;"><br>
+       Setiap buket dibuat dengan penuh detail, warna yang manis, dan pastinya bisa custom sesuai keinginanmu!
+       Nggak cuma buket, Doramiyaku juga punya koleksi ganci lucu & unik, dari karakter anime, bentuk makanan mini, 
+       sampai desain custom yang bisa kamu request sendiri. Cocok banget buat hadiah kecil, hiasan
+        tas, atau koleksi pribadi!</p>
+       
+             
+        <div style="display: flex; align-items: center; flex-wrap: wrap;">
+    <img src="asset/b bunga satin 60k.jpg" alt="satin" style="width: 300px; max-width: 100%; margin-right: 20px; flex-shrink: 0;">
+    <p style="text-align: justify; margin: 0; flex: 1;">
+    ✨ Kenapa belanja di Doramiyaku?<br>
+    ✅ Buket & ganci handmade kualitas terbaik<br>
+    ✅ Bisa request desain custom<br>
+    ✅ Harga bersahabat<br>
+    ✅ Fast response & pengiriman cepat<br>
+    ✅ Banyak promo dan bonus spesial!<br>
     </p>
+        </div>
+ <div class="home-gallery">
+    <img src="asset/b snack coklat 70k.jpg" alt="Banner">
+    <img src="asset/banner2.png" alt="Buket Boneka">
+    <img src="asset/ganci.2k.jpg" alt="Ganci">
+    <img src="asset/b mini 20k.jpg" alt="Buket Satin">
+    <img src="asset/b kupu2 led biru.jpg" alt="Buket LED">
+    <img src="asset/bolu pink 15k.jpg" alt="Bolu Pink">
+    <img src="asset/bunga 20k biru.jpg" alt="Bunga Biru">
+    <img src="asset/b uang 80kk.jpg" alt="uang">
+  </div>
+   
+    
+<p style="text-align: center;"> setiap hari lebih berwarna bersama Doramiyaku! 🌸<br>
+cek katalog kami sekarang dan temukan yang paling cocok buat kamu 💬<br>
+📲 Order via DM/chat ya!</p>
+       <div style="margin-top: 20px; text-align: center;">
+           <a href="https://wa.me/6283137073088" target="_blank" class="wa-btn">💬 WhatsApp</a></div>
+       </div>
 </section>
 
-<!-- Footer -->
+  <!--PRODUK-->
+  <div style="height: 3px; background: linear-gradient(to right, #f5c1fa, #e0a9e0); margin: 40px 0;"></div>
+
+<section id="produk">
+
+  <h5 style="text-decoration: underline; text-align: center; text-align: center;" > <b>Daftar Produk Bucket</b></h5>
+  <p>Buket bunga cantik cocok untuk semua momen spesial seperti ulang tahun, wisuda, anniversary, lamaran, dan lainnya. 
+    🌷 Tersedia berbagai pilihan warna dan model, bebas request jenis bunga, warna, tema, hingga ucapan, serta bisa custom sesuai keinginan dan budget kamu 💕.</p>
+
+  <div class="product-grid" style="text-align: center;">
+
+    <!-- Produk 1 -->
+    <div class="product-card">
+      <div class="product-img-container">
+        <img src="asset/b 1tangkai 12k.jpg" alt="Buket 1 tangkai" class="product-img" />
+      </div>
+      <div class="product-info">
+        <div>
+          <div class="product-name">Buket bunga kawat bulu<br> 1 tangkai</div>
+          <div class="product-price">Rp 12.000</div>
+        </div>
+        <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+          Cek Disini
+        </a>
+      </div>
+    </div>
+
+    <!-- Produk 2 -->
+    <div class="product-card">
+      <div class="product-img-container">
+        <img src="asset/b bunga 35k.jpg" alt="Buket 35k" class="product-img" />
+      </div>
+      <div class="product-info">
+        <div>
+          <div class="product-name">Buket Bunga Matahari</div>
+          <div class="product-price">Rp 35.000</div>
+        </div>
+        <a href="https://shopee.co.id/dianantsya12" target="_blank" class="product-button">
+          Cek Disini
+        </a>
+      </div>
+    </div>
+
+  <!-- Produk 3 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b bunga 10k.jpg" alt="buket 10k" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Mini kawat bulu</div>
+      <div class="product-price">Rp 10.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 4 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b bunga 30k pink.jpg" alt="Buket 30k" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket bunga</div>
+      <div class="product-price">Rp 30.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 5 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b bunga boneka 70k.jpg" alt="Buket" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Boneka + Bunga</div>
+      <div class="product-price">Rp 70.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 6 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b bunga 45k.jpg" alt="Buket 45k" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket bunga kawat bulu</div>
+      <div class="product-price">Rp 45.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 7 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b bunga led 50k.jpg" alt="Buket LED" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Bunga Artificial + LED</div>
+      <div class="product-price">Rp 50.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 8 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b bunga satin 60k.jpg" alt="Buket Pita satin" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Pita Satin</div>
+      <div class="product-price">Rp 60.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 9 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b kupu2 led biru.jpg" alt="Buket kupu led" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Buttterfly + LED</div>
+      <div class="product-price">Rp 30.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 10 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b mini 20k.jpg" alt="Buket mini" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Pita Satin Mini</div>
+      <div class="product-price">Rp 20.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 11 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b snack  bunga 70k.jpg" alt="Buket snack 70k" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Snack + Bunga</div>
+      <div class="product-price">Rp 70.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 12 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b snack 100k.jpg" alt="Buket 100K" class="product-img" />
+  </div>
+  <div class="product-info"> 
+    <div>
+      <div class="product-name">Buket Snack</div>
+      <div class="product-price">Rp 100.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 13 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b snack coklat 70k.jpg" alt="Buket snack" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Coklat + bunga</div>
+      <div class="product-price">Rp 70.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 14 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/b snack love 30k.jpg" alt="Buket love" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Permen Love</div>
+      <div class="product-price">Rp 30.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 15 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/buket bunga 40k.jpg" alt="Buket bunga"  class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Bunga Artificial</div>
+      <div class="product-price">Rp 50.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 16 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/KOSONG 10K.jpg" alt="Buket KOSONG" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Kosong</div>
+      <div class="product-price">Rp 15.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 17 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/kosong 2.jpg" alt="Buket kosong" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Kosong</div>
+      <div class="product-price">Rp 15.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 18 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/buket butterfly besar.jpg" alt="Buket kupu2" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Buket Butterfly Besar + LED</div>
+      <div class="product-price">Rp 45.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+  </div>
+
+  <div style="height: 3px; background: linear-gradient(to right, #f5c1fa, #e0a9e0); margin: 40px 0;"></div>
+
+ 
+<h5 style="text-decoration: underline; text-align: center;"><b>Daftar Gantungan Kunci & Hampers Lainnya</b></h5>
+<p>Gantungan custom lucu dan unik, cocok untuk kado, souvenir, atau koleksi pribadi!
+Bisa request nama, inisial, bentuk, warna, dan hiasan tambahan seperti manik-manik atau gantungan karakter.
+🧷 Bebas request model & warna!
+Cocok dijadikan gantungan tas, kunci, atau goodie bag event.</p>
+ <div class="product-grid" style="text-align: center;">
+
+<!-- Produk 1 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/toper 110k.jpg" alt="toper" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Toper Makanan Bebas Request<br> Request Via Chat</div>
+      <div class="product-price">Rp.70.000 - Rp.110.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 2 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/ganci.2k.jpg" alt="Ganci" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Gantungan Kunci Huruf</div>
+      <div class="product-price">Rp 3.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 3 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/ganci 20k.jpg" alt="ganci nama" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Ganci Nama</div>
+      <div class="product-price">Rp 20.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 4 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/ganci 15k.jpg" alt="ganci" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Gantungan kunci</div>
+      <div class="product-price">Rp15.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 5-->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/ganci 10k.jpg" alt="ganci"class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Gantungan kunci Mini</div>
+      <div class="product-price">Rp10.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 6 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/cermin 5k.jpg" alt="Cermin" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Cermin Karakter</div>
+      <div class="product-price">Rp10.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 7 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/bunga 20k putih.jpg" alt="bunga putih" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Hiasan Bunga</div>
+      <div class="product-price">Rp 20.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 8 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/bunga 20k pink.jpg" alt="bunga pink" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Hiasan Bunga</div>
+      <div class="product-price">Rp 20.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 9-->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/bunga 20k biru.jpg" alt="bunga biru" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Hiasan Bunga</div>
+      <div class="product-price">Rp 20.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 10 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/bolu 15k.jpg" alt="bolu biru" class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Bolu Kawat Bulu</div>
+      <div class="product-price">Rp 15.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 11 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/bolu pink 15k.jpg" alt="bolu pink"class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Bolu Kawat Bulu</div>
+      <div class="product-price">Rp 15.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+<!-- Produk 12 -->
+<div class="product-card">
+  <div class="product-img-container">
+    <img src="asset/gancifoto.jpg" alt="gancifoto"class="product-img" />
+  </div>
+  <div class="product-info">
+    <div>
+      <div class="product-name">Ganci Custom Foto</div>
+      <div class="product-price">Rp 6.000</div>
+    </div>
+    <a href="https://shopee.co.id/dianantsya12"target="_blank" class="product-button">
+      Cek Disini
+    </a>
+  </div>
+</div>
+
+    <!-- Tambahkan produk lain di sini -->
+
+  </div>
+</section>
+
+<div style="height: 3px; background: linear-gradient(to right, #f5c1fa, #e0a9e0); margin: 40px 0;"></div>
+
+<!-- ABOUT -->
+<section id="about" >
+  <h5 style="text-align: center;"><b>Tentang Kami</b></h5>
+  <p >Doramiyaku adalah toko handmade yang menghadirkan berbagai produk kreatif dan custom gift seperti buket uang, 
+  buket bunga, buket snack, gantungan lucu, hingga hampers estetik untuk semua momen spesial.
+<br>Kami percaya bahwa setiap hadiah punya cerita, karena itu kami menyediakan layanan bebas request desain, warna, 
+ukuran, hingga isi produk sesuai keinginan pelanggan. Dibuat dengan detail dan penuh cinta, produk Doramiyaku cocok untuk hadiah ulang tahun, wisuda, anniversary, 
+ lamaran, hari raya, hingga kejutan spontan untuk orang tersayang 💝<br></p>
+<p style="text-align: center;"><br>  ✨ Handmade with love
+<br>  ✨ Bisa custom sesuai selera & budget
+<br>  ✨ Siap kirim ke seluruh Indonesia<br>
+<br> Terima kasih telah mempercayakan momen spesialmu bersama Doramiyaku 💐  </p><br><br>
+</section>
+
+<div style="height: 3px; background: linear-gradient(to right, #f5c1fa, #e0a9e0); margin: 40px 0;"></div>
+
+<!-- CONTACT -->
+<section id="contact" style="text-align: center;">
+  <h5> <b>Hubungi Kami</b></h5>
+  <p>📍 Alamat: Kp. Lebaksaat, Tribaktimulya, Pangalengan, Bandung, Jawa Barat 40378.</p>
+  <p>📧 Email: <a href="mailto:doramiyaku.id@gmail.com">doramiyakuid@gmail.com</a></p><br><br>
+
+  <h6 ><b>Info Selengkapnya Cek Disini</b></h6>
+        
+  <a href="https://wa.me/6283137073088" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:40px;"><br>
+    <span style="font-size:16px; color:#25D366;">WhatsApp</span><br><br>
+  </a>
+        
+  <a href="https://www.instagram.com/doramiyaku.id?utm_source=qr&igsh=MWJ4NG9lczNoMHM1cg==" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" style="width:40px;"><br>
+  <span style="font-size:16px; color:#ae1fab;">Doramiyaku.id</span>
+</a>
+
+
+
+  <div style="height: 3px; background: linear-gradient(to right, #f5c1fa, #e0a9e0); margin: 40px 0;"></div>
+
+
+<div style="text-align: center; margin: 40px 0; color: #e0a9e0; font-weight: bold;">
+  ✨ ✿ ✨
+</div>
+
+<!-- ===== ULASAN / TESTIMONI ===== -->
+<style>
+  .review-wrap{
+    max-width: 1000px; margin:40px auto; padding:0 16px;
+  }
+  .review-header{
+    text-align:center; margin-bottom:18px;
+  }
+  .rating-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#efdeeb; border:1px solid #efdeeb; color:#333;
+    padding:8px 14px; border-radius:999px; font-weight:600;
+  }
+  .stars{ font-size:18px; line-height:1; letter-spacing:1px; }
+  .review-grid{
+    display:grid; gap:16px;
+    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  }
+  .review-card{
+    background:#ffffff; border:1px solid #efdeeb; border-radius:12px;
+    box-shadow:0 1px 4px rgba(0,0,0,.06);
+    padding:14px; text-align:left; display:flex; flex-direction:column; gap:10px;
+  }
+  .review-top{ display:flex; align-items:center; gap:10px; }
+  .avatar{
+    width:40px; height:40px; border-radius:50%; background:#e0a9e0; color:#fff;
+    display:inline-flex; align-items:center; justify-content:center; font-weight:700;
+  }
+  .name{ font-weight:600; }
+  .date{ font-size:12px; color:#666; }
+  .review-stars{ color:#f38aee; font-size:16px; }
+  .tag{
+    display:inline-block; font-size:12px; background:#ffe3fd; color:#8a3b85;
+    border:1px solid #f5c1fa; padding:2px 8px; border-radius:999px;
+  }
+  .review-text{ font-size:14px; color:#333; }
+  .review-actions{ display:flex; justify-content:center; margin-top:14px; }
+  .btn-wa{
+    background:#25D366; color:#fff; text-decoration:none; font-weight:700;
+    padding:10px 16px; border-radius:24px;
+  }
+  .btn-wa:hover{ background:#1ebe5d; }
+</style>
+
+
+  <div class="review-header">
+    <h5><b>Ulasan Pelanggan</b></h5>
+    <div class="rating-badge">
+      <span class="stars">★★★★★</span>
+      <span>4.9/5 (128 ulasan)</span>
+    </div>
+    <p style="margin-top:8px;">Terima kasih sudah percaya Doramiyaku! 💐</p>
+  </div>
+
+  <div class="review-grid">
+    <!-- Card 1 -->
+    <article class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <div class="review-top">
+        <div class="avatar">AN</div>
+        <div>
+          <div class="name" itemprop="author">Ani</div>
+          <div class="date" itemprop="datePublished" content="2025-08-01">1 Agustus 2025</div>
+        </div>
+      </div>
+      <div class="review-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+        ★★★★★ <meta itemprop="ratingValue" content="5">
+      </div>
+      <span class="tag">Buket Wisuda</span>
+      <p class="review-text" itemprop="reviewBody">
+        Bunganya cantik banget, pengemasan rapi, dan pengiriman cepat. Penjual ramah & sabar bantu pilih warna. Recommended!
+      </p>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <div class="review-top">
+        <div class="avatar">RK</div>
+        <div>
+          <div class="name" itemprop="author">Raka</div>
+          <div class="date" itemprop="datePublished" content="2025-07-22">22 Juli 2025</div>
+        </div>
+      </div>
+      <div class="review-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+        ★★★★☆ <meta itemprop="ratingValue" content="4">
+      </div>
+      <span class="tag">Ganci Custom</span>
+      <p class="review-text" itemprop="reviewBody">
+        Ganci sesuai desain request, hasilnya rapi. Pengiriman sedikit telat karena kurir, tapi penjual fast response.
+      </p>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <div class="review-top">
+        <div class="avatar">SY</div>
+        <div>
+          <div class="name" itemprop="author">Siti</div>
+          <div class="date" itemprop="datePublished" content="2025-07-10">10 Juli 2025</div>
+        </div>
+      </div>
+      <div class="review-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+        ★★★★★ <meta itemprop="ratingValue" content="5">
+      </div>
+      <span class="tag">Buket LED</span>
+      <p class="review-text" itemprop="reviewBody">
+        Buket LED-nya mewah, lampunya terang, cocok buat surprise malam hari. Harga bersahabat. Mantap!
+      </p>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+      <div class="review-top">
+        <div class="avatar">DN</div>
+        <div>
+          <div class="name" itemprop="author">Deni</div>
+          <div class="date" itemprop="datePublished" content="2025-06-29">29 Juni 2025</div>
+        </div>
+      </div>
+      <div class="review-stars" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+        ★★★★★ <meta itemprop="ratingValue" content="5">
+      </div>
+      <span class="tag">Buket Snack</span>
+      <p class="review-text" itemprop="reviewBody">
+        Susunan snack rapi, pilihan warna wrapping cakep. Anak saya senang sekali, terima kasih Doramiyaku!
+      </p>
+    </article>
+  </div>
+
+  <div class="review-actions">
+    <a class="btn-wa" href="https://wa.me/6283137073088?text=Halo%20Doramiyaku%2C%20saya%20ingin%20beri%20ulasan%20pesanan%20saya%20..." target="_blank">Tulis Ulasan via WhatsApp</a>
+  </div>
+</section>
+
+<!-- ===== JSON-LD SEO (opsional tapi bagus) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Doramiyaku",
+  "url": "https://example.com",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "128"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": "Ani",
+      "datePublished": "2025-08-01",
+      "reviewBody": "Bunganya cantik banget, pengemasan rapi, dan pengiriman cepat.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": "Raka",
+      "datePublished": "2025-07-22",
+      "reviewBody": "Ganci sesuai desain request, hasil rapi, penjual fast response.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "4" }
+    }
+  ]
+}
+</script>
+
+
+
+
+</section>
+
 <footer>
-    <p>© 2025 Buket Ungu Cantik | Dibuat dengan 💜</p>
+  <p>© <span id="tahun"></span> Doramiyaku. Semua Hak Dilindungi.</p>
 </footer>
 
+<script>
+// Ambil elemen input search
+const searchInput = document.querySelector('.search-bar input');
+
+// Jalankan fungsi saat user mengetik
+searchInput.addEventListener('keyup', function() {
+  const keyword = this.value.toLowerCase();
+  const products = document.querySelectorAll('.product-card');
+
+  products.forEach(product => {
+    const productName = product.querySelector('.product-name').textContent.toLowerCase();
+    if (productName.includes(keyword)) {
+      product.style.display = ''; // tampilkan
+    } else {
+      product.style.display = 'none'; // sembunyikan
+    }
+  });
+});
+ document.getElementById("tahun").textContent = new Date().getFullYear();
+
+</script>
 </body>
 </html>
-
